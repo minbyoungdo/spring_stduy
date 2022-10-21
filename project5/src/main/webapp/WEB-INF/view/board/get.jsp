@@ -50,6 +50,7 @@
 		console.log(data);
 	});*/
 	
+	
 	function showList(page){
 		replyService.getList({bno:bnoValue, page : page || 1}, function(list){
 			var str ="";
