@@ -54,7 +54,7 @@
 		replyService.getList({bno:bnoValue, page : page || 1}, function(list){
 			var str ="";
 			if(list == null || list.length ==0){
-				replyUL.html("");
+				replyUL.html("rrr");
 				return;
 			}
 			for(var i=0, len = list.length || 0; i<len ; i++){
