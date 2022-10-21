@@ -134,6 +134,7 @@ public class SampleController {
 	 * SampleDTO dto) { log.info("/ex06......"); return dto; }
 	 */
 	
+	//중요
 	@GetMapping("/ex07")//ex06의 수작업 버전 json
 	public ResponseEntity<String> ex07()
 	{

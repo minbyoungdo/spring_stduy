@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.domain.BoardVO;
+import com.example.domain.Criteria;
 
 public interface BoardMapper {
 	//@Select("select * from tbl_board where bno >0")//db가져옴
 	public List<BoardVO> getList();//db가져옴
+	public List<BoardVO> getListWithPaging(Criteria cri);
 	
 	public void insert(BoardVO board);
 	public Integer insertSelectKey(BoardVO board);
