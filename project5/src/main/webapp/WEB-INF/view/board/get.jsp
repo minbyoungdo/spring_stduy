@@ -7,14 +7,20 @@
 <html lang="en">
 <%@include file="../include/header.jsp" %>
 <body class="bg-gradient-primary">
-	<script type="text/javascript" src ="/resources/js/reply.js"></script>
+	<script type="text/javascript" src ="./resources/js/reply.js"></script>
 	<script>
 	console.log("===============");
 	console.log("JS Tset");
 	var bnoValue='<c:out value="${board.bno}"/>';
-
+	replyService.add(
+		reply:"JS Test", replyer:"tester",replyer:"tester",bno:bnoValue},
+		function(result)
+		{
+			alert("RESULT: " + result);
+		}
+	);
 	//for replyService add test
-/*  	replyService.add(
+	/* replyService.add(
 		{reply:"JS Test", replyer:"tester",bno:bnoValue},
 		function(result)
 		{
@@ -51,7 +57,7 @@
 	});*/
 	
 	
-	function showList(page){
+	/*function showList(page){
 		replyService.getList({bno:bnoValue, page : page || 1}, function(list){
 			var str ="";
 			if(list == null || list.length ==0){
@@ -67,7 +73,7 @@
 			replyUL.html(str);
 			
 		});
-	}
+	} */
 	</script>
 	
 	<script type="text/javascript">
