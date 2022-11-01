@@ -20,10 +20,19 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class BoardMapperTest {
 	
-	@Setter(onMethod_=@Autowired)
+	//@Setter(onMethod_=@Autowired)
 	private BoardMapper mapper;
 	
+	@Setter(onMethod_=@Autowired)
+	private UserMapper umapper;
+	
+	
 	@Test
+	public void ugetlist()
+	{
+		umapper.getList().forEach(user -> log.info(user));
+	}
+	//@Test
 	public void testGetList()
 	{
 		//BoardMapper.java의 getList에서 board의 데이터 타입이 전해져버려서
