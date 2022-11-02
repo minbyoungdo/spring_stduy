@@ -39,18 +39,22 @@ public class UserController {
 	{
 		log.info("login"+id+passwd);
 		HttpSession session = request.getSession();
-		if(service.LoginUser(id,passwd)!=null)
+		log.info(service.LoginUser(id,passwd));
+		UserVO user1= new UserVO();
+		user1 =service.LoginUser(id,passwd);
+		log.info(user1);
+		if(user1==null)
+		{
+			session.setAttribute("sessionId", null);
+			return "redirect:/user/User_Login?msg=1";
+		}
+		else
 		{
 			UserVO user= new UserVO();
 			user = service.LoginUser(id,passwd);
 			session.setAttribute("sessionId", user);
 			log.info("signup.."+user.getUserid());
 			return "redirect:/user/User_Main_Home";
-		}
-		else
-		{
-			session.setAttribute("sessionId", null);
-			return "redirect:/user/User_Login";
 		}
 	}
 	@GetMapping("/logout")

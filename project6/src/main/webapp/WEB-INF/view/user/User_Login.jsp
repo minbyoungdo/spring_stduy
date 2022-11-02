@@ -6,12 +6,21 @@
 <head>
 <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/>
 <meta charset="utf-8">
+<%
+	String msg= request.getParameter("msg");
+%>
 <script  type="text/javascript">
-	$(function(){
-		$("#login").click(function(
-				
-		))
-	})
+window.onload=function()
+{
+	var msg1 = getParameter("msg");
+	if(msg1!=null)
+	{
+		if(msg1.equals("1"))
+		{
+			alert("로그인에 실패 했습니다.");
+		}
+	}
+}
 </script>
 </head>
 <body>

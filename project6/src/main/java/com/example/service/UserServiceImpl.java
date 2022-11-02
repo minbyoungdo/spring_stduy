@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
 	public UserVO LoginUser(String id,String passwd) {
 		UserVO user = new UserVO();
 		log.info("userid : "+ id);
-		umapper.LoginUser(id,passwd);
+		user=umapper.LoginUser(id,passwd);
 		return user;
 	}
 

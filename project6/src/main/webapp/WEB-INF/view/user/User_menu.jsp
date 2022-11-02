@@ -28,9 +28,12 @@
         </li>
        </c:when>
         <c:otherwise>
+       		<li class="nav-item" >
+       			<input class="form-control" name="bno"
+                					value='<c:out value="${tbl_user.name}"/>' readonly="readonly">
+       		</li>
          	<li class="nav-item">
           	<a class="nav-link active" href="/user/logout"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">로그아웃</font></font></span></a>
-
         	</li>
         	<li class="nav-item">
          	 <a class="nav-link" href="./editUser"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">회원 정보</font></font></a>

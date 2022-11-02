@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/>
+<!-- <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/> -->
 <meta charset="utf-8">
 <%-- <%
 	String sessionId2 = (String) session.getAttribute("sessionId");
 %> --%>
+
 <title>MainHome</title>
 </head>
-<body>
+<body onload="msg1()">
 <%@ include file="./User_menu.jsp" %>
 
 <div class="container">
