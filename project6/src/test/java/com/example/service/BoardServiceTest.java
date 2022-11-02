@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.domain.BoardVO;
 import com.example.domain.Criteria;
+import com.example.domain.UserVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -18,14 +19,25 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration(classes = {com.example.config.RootConfig.class})
 @Log4j
 public class BoardServiceTest {
-	@Setter(onMethod_= {@Autowired})
+	//@Setter(onMethod_= {@Autowired})
 	private BoardService service;
+	
+	@Setter(onMethod_=@Autowired)
+	private UserService uservice;
+	
+	@Test
+		public void login()
+		{
+			//uservice.sele();
+			UserVO user= new UserVO();
+			uservice.LoginUser("4444","4444");
+		}
 	
 	//@Test
 	public void testExist()
 	{
-		log.info(service);
-		assertNotNull(service);
+		log.info(uservice);
+		assertNotNull(uservice);
 	}
 	
 	//@Test
@@ -60,7 +72,7 @@ public class BoardServiceTest {
 		log.info("REMOVE RESULT: "+service.remove(2L));
 	}
 	
-	@Test
+	//@Test
 	public void testUpdate()
 	{
 		BoardVO board = service.get(7L);

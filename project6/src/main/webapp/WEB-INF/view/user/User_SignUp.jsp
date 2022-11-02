@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/>
 <script type="text/javascript">
 function check()
 {
@@ -39,14 +38,14 @@ if (!document.forms[form].elements["uname"].value)
 <div class="card" align="center" style="height:415px;width:1000px;margin-left:20%;margin-right:20%;padding-left:0px;background-color: orange;">
 		<div class="container row">
 			<div class ="col-md-6" style="margin-left:0px;">
-				<img src="./resources/img/Coffee1.jpg" style="width:400px; height:415px;float:left;">
+				<img src="../resources/img/Coffee1.jpg" style="width:400px; height:415px;float:left;">
 			</div>
 			<div class="col-md-6">
 			<h3 class="form-signin-heading">Please sign in</h3>
-		<form name = "SignUp" class="form-horizontal" action="./ProcessAddUsers.jsp" method="post" onsubmit="return check()">
+		<form role="form" name = "SignUp" class="form-horizontal" action="/user/signup" method="post" onsubmit="return check()">
 			<div class="form-group row">
 				<label class="col-md-4" align="left">*아이디 : </label>
-				<div class="col-md-6"><input type="text" name="id" id="id" class="form-control" placeholder="아이디를 입력하시오." autofocus></div>
+				<div class="col-md-6"><input type="text" name="userid" id="userid" class="form-control" placeholder="아이디를 입력하시오." autofocus></div>
 			</div>
 			<div class ="form-group row">
 				<label class="col-md-4" align="left">*비밀번호 : </label>
@@ -62,7 +61,7 @@ if (!document.forms[form].elements["uname"].value)
 			</div>
 			<div class ="form-group row">
 			<label class="col-md-4" align="left">*전화번호 : </label>
-			<div class="col-md-6"><input type="text" name ="phone"class="form-control"placeholder="모바일 전화번호"></div>
+			<div class="col-md-6"><input type="text" name ="mobile"class="form-control"placeholder="모바일 전화번호"></div>
 			</div>
 			<div class ="form-group row">
 			<label class="col-md-4" align="left">*주소 : </label>

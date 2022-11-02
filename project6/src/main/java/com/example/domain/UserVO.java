@@ -6,9 +6,12 @@ import lombok.Data;
 
 @Data
 public class UserVO {
-	private String uid;
-	private String passwd;
+	private String userid;
+	private String password;
 	private String name;
+	private int auth;
 	private String address;
-	private String phone;
+	private String mobile;
+	private Date regdate;
+	private Date updateDate; 
 }

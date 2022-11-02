@@ -7,14 +7,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.example.domain.BoardVO;
 import com.example.domain.Criteria;
+import com.example.domain.UserVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {com.example.config.RootConfig.class})
 @Log4j
@@ -27,11 +30,50 @@ public class BoardMapperTest {
 	private UserMapper umapper;
 	
 	
-	@Test
-	public void ugetlist()
+	//@Test
+	public void getList()
 	{
 		umapper.getList().forEach(user -> log.info(user));
 	}
+	//@Test
+	public void Insert()
+	{
+			UserVO user= new UserVO();
+			user.setUserid("4444");
+			user.setPassword("4444");
+			user.setAuth(1);
+			user.setMobile("1231231231235");
+			user.setAddress("busan2");
+			user.setName("lee");
+			umapper.insertUser(user);
+			log.info(user);
+	}
+	//@Test
+	public void Delete()
+	{
+		log.info("DELETE COUNT : " + umapper.delete("521"));
+	}
+	@Test
+	public void login()
+	{
+		UserVO user= new UserVO();
+		user=umapper.LoginUser("521","4321");
+		log.info(user);
+	}
+	//@Test
+		public void Update()
+		{
+			UserVO user= new UserVO();
+			//실행전 존재하는 번호인지 확인 할 것
+
+			user.setUserid("521");
+			user.setName("mmm");
+			
+			int count = umapper.update(user);
+			log.info("UPDATE COUNT :" +count);
+		}
+	
+	
 	//@Test
 	public void testGetList()
 	{

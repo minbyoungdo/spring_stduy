@@ -87,7 +87,7 @@ public class BoardControllerTest {
 		log.info(resultPage);
 				
 	}
-	@Test
+	//@Test
 	public void testListPaging() throws Exception
 	{
 		log.info(mockMvc.perform

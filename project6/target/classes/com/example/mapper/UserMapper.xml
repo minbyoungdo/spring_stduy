@@ -4,12 +4,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.mapper.UserMapper">
-	<select id="ugetlist" resultType="com.example.domain.UserVO">
+	 <select id="getList" resultType="com.example.domain.UserVO">
 		<![CDATA[select * from tbl_user
 		]]>
 	</select>
-	<insert id ="insert">
-		insert into
-				tbl_user()
+	<select id="LoginUser" resultType="com.example.domain.UserVO">
+		select * from tbl_user
+			where userid=#{userid}
+	</select>
+ 	<insert id ="insertUser">
+		insert into tbl_user(userid,password,name, auth, address,mobile,registdate)
+values (#{userid},#{password},#{name},1,#{address},#{mobile},sysdate)
 	</insert>
+	<delete id="delete">
+		delete tbl_user where userid=#{userid}
+	</delete>
+	<update id="update">
+		update
+			tbl_user
+		set
+			userid=#{userid}, password=#{password},name=#{name},mobile=#{mobile},address=#{address},updateDate=sysdate
+	</update>
 </mapper>
