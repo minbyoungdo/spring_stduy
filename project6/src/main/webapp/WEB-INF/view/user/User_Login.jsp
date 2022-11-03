@@ -4,27 +4,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/>
 <meta charset="utf-8">
 <%
-	String msg= request.getParameter("msg");
+	String msg= request.getParameter("msg");// == null ? "0" : request.getParameter("msg");
 %>
-<script  type="text/javascript">
-window.onload=function()
-{
-	var msg1 = getParameter("msg");
-	if(msg1!=null)
-	{
-		if(msg1.equals("1"))
-		{
-			alert("로그인에 실패 했습니다.");
-		}
-	}
-}
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+     $(function() {
+
+        if(msg == 1)
+    	 	alert("123123");
+        else
+        	alert("333333");
+
+     });
+
 </script>
 </head>
 <body>
+
 <%@ include file="./User_menu.jsp" %>
+
 <div class="card" align="center">
 		<div class="container row">
 			<div class ="col-md-8">
@@ -40,7 +42,7 @@ window.onload=function()
 					out.println("</div>");
 				}
 			%> 
-			<form class="form-signin" role="form" action="/user/login" method="post">
+			<form class="form-signin" role="form" action="/user/logincheck" method="post">
 				<div class="form-group">
 					<label for="inputUserName" class="sr-only">User Name</label> <input
 						type="text" class="form-control" placeholder="ID" name="userid" id="userid"

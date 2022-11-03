@@ -12,6 +12,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from tbl_user
 			where userid=#{userid} and password=#{password}
 	</select>
+	<select id="checkid" resultType="int">
+		select count(*) from tbl_user
+			where userid=#{userid}
+	</select>
+	<select id="checkuser" resultType="int">
+		select count(*) from tbl_user
+			where userid=#{userid} and password=#{password}
+	</select>
+	
  	<insert id ="insertUser">
 		insert into tbl_user(userid,password,name, auth, address,mobile,registdate)
 values (#{userid},#{password},#{name},1,#{address},#{mobile},sysdate)
@@ -23,6 +32,7 @@ values (#{userid},#{password},#{name},1,#{address},#{mobile},sysdate)
 		update
 			tbl_user
 		set
-			userid=#{userid}, password=#{password},name=#{name},mobile=#{mobile},address=#{address},updateDate=sysdate
+			userid=#{userid}, password=#{password},name=#{name},auth=#{auth},mobile=#{mobile},address=#{address},updateDate=sysdate
+		where userid=#{userid}
 	</update>
 </mapper>

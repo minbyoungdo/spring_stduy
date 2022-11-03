@@ -51,4 +51,16 @@ public class UserServiceImpl implements UserService{
 		umapper.insertUser(user);
 	}
 
+	@Override
+	public int CheckId(String userid) {
+		int count = umapper.checkid(userid);
+		return count;
+	}
+
+	@Override
+	public int CheckUser(String userid, String password) {
+		int count = umapper.checkuser(userid,password);
+		return count;
+	}
+
 }

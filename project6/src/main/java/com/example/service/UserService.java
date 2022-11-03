@@ -10,4 +10,6 @@ public interface UserService
 	public boolean modify(UserVO user);
 	public boolean remove(String id);
 	public void insertUser(UserVO user);
+	public int CheckId(@Param("userid")String userid);
+	public int CheckUser(@Param("userid")String userid, @Param("password")String password);
 }
