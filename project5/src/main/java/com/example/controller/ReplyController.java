@@ -44,13 +44,11 @@ public class ReplyController {
 	
 	  @GetMapping(value="/pages/{bno}/{page}", produces = {
 	  MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-	  public ResponseEntity<List<ReplyVO>> getList(
-	  
-	  @PathVariable("page") int page,
-	  
-	  @PathVariable("bno") Long bno) { log.info("getList............"); 
-	  Criteria cri = new Criteria(page,10);
-	  log.info(cri);
+	  public ResponseEntity<List<ReplyVO>> getList( @PathVariable("page") int page, @PathVariable("bno") Long bno) 
+	  { 
+		  log.info("getList............"); 
+		  Criteria cri = new Criteria(page,10);
+		  log.info(cri);
 	  
 	  return new ResponseEntity<>(service.getList(cri, bno),HttpStatus.OK); 
 	  }

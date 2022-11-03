@@ -33,17 +33,17 @@
         </c:otherwise>
         </c:choose> 
         	<li class="nav-item">
-          		<a class="nav-link active" href="./User_Drink_Menu"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">목록</font></font></a>
+          		<a class="nav-link active" href="/user/User_Drink_Menu"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">목록</font></font></a>
         	</li>
  		 	<li class="nav-item">
-          		<a class="nav-link" href="<c:url value="BoardListAction.do?pageNum=1"/>">
+          		<a class="nav-link" href="/user/User_Shopping_Basket">
           		<font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">장바구니</font></font></a>
         	</li>
 
         <div class="dropdown">
   			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 마이 페이지</button>
   			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    			<li><a class="dropdown-item" href="#">주문 내역 보기</a></li>
+    			<li><a class="dropdown-item" href="/user/User_Order_History">주문 내역 보기</a></li>
     			<li><a class="dropdown-item" href="/user/CheckSession?str=User_Edit">회원 정보 수정</a></li>
   			</ul>
 		</div>

@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/>
+<link rel ="stylesheet" href ="../resources/css/bootstrap.min.css"/>
 <meta charset="utf-8">
-<script type="text/javascript">
-	function linkActive()
+<script>
+/* 	function linkActive()
 	{
 		let e = document.getElementById('navli');
 		if(e.Name==='2')
@@ -16,7 +16,8 @@
 			{e.className='nav-link';}
 		else if(e.className==='nav-link')
 			{e.className='nav-link active';}
-	}
+		https://kimvampa.tistory.com/252
+	} */
 </script>
 <title>Drink Menu</title>
 </head>
@@ -51,14 +52,13 @@
 <div class="container">
 <div class="card text-center">
   <div class="card-header" style="background-color:brown;">
-  <!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group"> -->
   <ul class="nav nav-tabs card-header-tabs">
   	<li class="nav-item">
   		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
   		<label class="btn btn-outline-primary" for="btnradio1">Coffee</label>
   	</li>
   	<li class="nav-item">
-  		<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+  		<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick()="acyncMovePage(/user/User_Main_Home)">
   		<label class="btn btn-outline-primary" for="btnradio2">Latte</label>
  	</li>
   	<li class="nav-item">
@@ -70,9 +70,8 @@
   		<label class="btn btn-outline-primary" for="btnradio4">Smoothi</label>
   	</li>
   </ul>
-<!-- </div> -->
   </div>
-  <div class="card-body">
+  <div class="card-body" id="content1">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   </div>

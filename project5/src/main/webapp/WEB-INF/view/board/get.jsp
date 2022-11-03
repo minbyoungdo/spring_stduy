@@ -7,7 +7,7 @@
 <html lang="en">
 <%@include file="../include/header.jsp" %>
 <body class="bg-gradient-primary">
-	<script type="text/javascript" src ="./resources/js/reply.js"></script>
+	<script type="text/javascript" src ="/resources/js/reply.js"></script>
 	<script>
 	console.log("===============");
 	console.log("JS Tset");
