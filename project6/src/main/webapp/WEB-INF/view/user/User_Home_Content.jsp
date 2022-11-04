@@ -5,19 +5,19 @@
 	<div class= "col-md-10">
 		<div class = "row row-cols-3">
 			<div class ="col">
-				<a href="#"><img src="./resources/images/p2.PNG" style="width:200px; height:250px"></a>
+				<a href="#"><img src="../resources/img/p2.PNG" style="width:200px; height:250px"></a>
 			</div>
 			<div class ="col">
-				<a href="#"><img src="./resources/images/p6.PNG" style="width:200px; height:250px"></a>
+				<a href="#"><img src="../resources/img/P1.PNG" style="width:200px; height:250px"></a>
 			</div>
 			<div class ="col">
-				<a href="#"><img src="./resources/images/p9.PNG" style="width:200px; height:250px"></a>
+				<a href="#"><img src="../resources/img/p3.PNG" style="width:200px; height:250px"></a>
 			</div>
 			<div class ="col">
-				<a href=""><img src="./resources/images/p11.PNG" style="width:200px; height:250px"></a>
+				<a href=""><img src="../resources/img/p4.PNG" style="width:200px; height:250px"></a>
 			</div>
 			<div class ="col">
-				<a href="#"><img src="./resources/images/p16.PNG" style="width:200px; height:250px"></a>
+				<a href="#"><img src="../resources/img/p10.PNG" style="width:200px; height:250px"></a>
 			</div>
 		</div>
 	</div>

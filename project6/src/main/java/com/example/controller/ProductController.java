@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.domain.ProductVO;
+import com.example.domain.Product_CategoryVO;
 import com.example.domain.Criteria;
 import com.example.service.ProductService;
 
@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j;
 @WebAppConfiguration
 @Controller
 @Log4j
-@RequestMapping("/product/*")
+@RequestMapping("/user/*")
 @AllArgsConstructor
 public class ProductController {
 	private ProductService service;
@@ -34,10 +34,22 @@ public class ProductController {
 	{
 		
 	}
-	@GetMapping("/Drink_Menu")
-	public void getlist(@RequestParam("category") String category, Model model)
+
+	/*
+	 * @GetMapping("/User_Drink_Menu") public void getlist(@RequestParam("category")
+	 * String category, Model model) { log.info(category);
+	 * model.addAttribute("list",service.getlist()); }
+	 */
+	@GetMapping("/User_Drink_Menu")
+	public void getlist(Model model)
+	{
+		model.addAttribute("list",service.getlist());
+	}
+	@GetMapping("/User_One_Drink")
+	public void get(@RequestParam("category") String category,Model model)
 	{
 		log.info(category);
-		model.addAttribute("list",service.getlist());
+		log.info(service.get(category));
+		model.addAttribute("product",service.get(category));
 	}
 }

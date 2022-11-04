@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.domain.ProductVO;
+import com.example.domain.Product_CategoryVO;
 import com.example.mapper.ProductMapper;
 
 import lombok.AllArgsConstructor;
@@ -20,17 +20,17 @@ public class ProductServiceImpl implements ProductService{
 	private ProductMapper mapper;
 	
 	@Override
-	public ProductVO get() {
-		log.info("get........");
-		mapper.get();
-		return null;
+	public Product_CategoryVO get(String category) {
+		log.info(category);
+		log.info(mapper.get(category));
+		return mapper.get(category);
+		
 	}
 
 	@Override
-	public List<ProductVO> getlist() {
+	public List<Product_CategoryVO> getlist() {
 		log.info("get........");
-		mapper.getlist();
-		return null;
+		return mapper.getlist();
 	}
 
 	@Override

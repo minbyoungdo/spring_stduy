@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.example.domain.Ticket;
 import com.google.gson.Gson;
 
 import lombok.Setter;
@@ -98,21 +97,5 @@ public class BoardControllerTest {
 				.andReturn().getModelAndView().getModelMap()
 				);
 	}
-	//@Test
-	public void testConvert() throws Exception
-	{
-		Ticket ticket = new Ticket();
-		ticket.setTno(123);
-		ticket.setOwner("Admin");
-		ticket.setGrade("AAA");
-		//Gson 라이브러리를 이용해서 json 데이터로 변환
-		String jsonStr= new Gson().toJson(ticket);
-		
-		log.info(jsonStr);
-		
-		mockMvc.perform(post("/sample/ticket")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(jsonStr))
-				.andExpect(status().is(200));
-	}
+
 }

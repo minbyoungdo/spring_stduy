@@ -46,7 +46,6 @@
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   </div>
 </div>
-</div>
 
 
 <div class="container">
@@ -72,8 +71,21 @@
   </ul>
   </div>
   <div class="card-body" id="content1">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <div class= "col-md-10">
+		<div class = "row row-cols-3">
+			<c:forEach items="${list}" var="product">
+				<div class="col-sm-4" style="width:250px;height:350px;border:1px solid;margin-left:10px;margin-right:10px;" >
+					<div class ="col" style="margin-top:10px;">
+						<a href="/user/User_One_Drink?category=<c:out value="${product.pcategory}" />"><img src="../resources/img/<c:out value="${product.imagefile}"/>" style="width:200px; height:250px" align="center"></a>
+						<div>
+							<p style="line-height:1"><c:out value="${product.pcategory}" /><p>
+							<p style="line-height:1">설명 : <c:out value="${product.discription}"/><p>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
   </div>
 </div>
 </div>
