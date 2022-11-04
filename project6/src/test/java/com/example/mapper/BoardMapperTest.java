@@ -10,16 +10,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.example.domain.BoardVO;
-import com.example.domain.Criteria;
-import com.example.domain.UserVO;
+import com.mycoffee.domain.BoardVO;
+import com.mycoffee.domain.Criteria;
+import com.mycoffee.domain.UserVO;
+import com.mycoffee.mapper.BoardMapper;
+import com.mycoffee.mapper.UserMapper;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes= {com.example.config.RootConfig.class})
+@ContextConfiguration(classes= {com.mycoffee.config.RootConfig.class})
 @Log4j
 public class BoardMapperTest {
 	

@@ -12,7 +12,7 @@
 	</layout>
 </appender>
 
-<logger name="com.example.controller">
+<logger name="com.mycoffee.controller">
 	<level value="info"/>
 </logger>
 

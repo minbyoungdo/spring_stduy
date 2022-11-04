@@ -25,7 +25,7 @@ import lombok.extern.log4j.Log4j;
 @WebAppConfiguration//서블릿 콘텍스트를 사용하겠다는 의미
 
 @Log4j
-@ContextConfiguration(classes= {com.example.config.RootConfig.class,com.example.config.ServletConfig.class})
+@ContextConfiguration(classes= {com.mycoffee.config.RootConfig.class,com.mycoffee.config.ServletConfig.class})
 public class BoardControllerTest {
 	@Setter(onMethod_= {@Autowired})
 	private WebApplicationContext ctx;

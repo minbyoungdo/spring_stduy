@@ -8,15 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.example.domain.BoardVO;
-import com.example.domain.Criteria;
-import com.example.domain.UserVO;
+import com.mycoffee.domain.BoardVO;
+import com.mycoffee.domain.Criteria;
+import com.mycoffee.domain.UserVO;
+import com.mycoffee.service.BoardService;
+import com.mycoffee.service.UserService;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {com.example.config.RootConfig.class})
+@ContextConfiguration(classes = {com.mycoffee.config.RootConfig.class})
 @Log4j
 public class BoardServiceTest {
 	//@Setter(onMethod_= {@Autowired})
