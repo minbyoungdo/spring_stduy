@@ -41,10 +41,6 @@ public class ProductServiceImpl implements ProductService{
 		return i;
 	}
 
-	/*
-	 * @Override public List<Product_CategoryVO> getlist1(String category) { return
-	 * mapper.getlist1(category); }
-	 */
 	@Override
 	public List<ProductJoinVO> getlist1(String category) {
 		//log.info(mapper.getlist1(category));

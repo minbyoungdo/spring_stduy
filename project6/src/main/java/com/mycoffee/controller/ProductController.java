@@ -45,12 +45,12 @@ public class ProductController {
 	{
 		model.addAttribute("list",service.getlist());
 	}
-	@GetMapping("/User_One_Drink")
-	public void get(@RequestParam("category") String category,Model model)
+	@GetMapping({"/User_One_Drink","User_Drink_Order"})
+	public void get(@RequestParam("category") String category,Model model,HttpServletRequest request)
 	{
 		//log.info(service.getlist1(category));
-		//category.addAttribute("product",service.get(category));
+		model.addAttribute("product",service.get(category));
 		model.addAttribute("list",service.getlist1(category));
-		
+		request.setAttribute("list", service.getlist1(category));
 	}
 }
