@@ -23,4 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from tbl_order
 			where pcategory=#{category}
 	</select>
+	<select id="countlist" resultType="int">
+		select count(*) from tbl_order
+			where userid=#{userid}
+	</select>
+	<select id="countstatus" resultType="int">
+		select count(*) from tbl_order
+			where userid=#{userid} and status=#{status}
+	</select>
+	
 </mapper>

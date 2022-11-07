@@ -7,6 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <%
 	HttpSession sessionId = request.getSession(false);//있으면 받고 없으면 별도 생성하지 않기.
+	System.out.println(sessionId);
 %>
 
 <nav class="navbar navbar-expand-lg" style="background-color:#fff;">
@@ -36,7 +37,7 @@
           		<a class="nav-link active" href="/user/User_Drink_Menu"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">목록</font></font></a>
         	</li>
  		 	<li class="nav-item">
-          		<a class="nav-link" href="/user/User_Shopping_Basket">
+          		<a class="nav-link" href="/user/CheckSession?str=User_Shopping_Basket">
           		<font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">장바구니</font></font></a>
         	</li>
 		<c:choose>
@@ -45,7 +46,7 @@
         		<div class="dropdown">
   					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 마이 페이지</button>
   					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    					<li><a class="dropdown-item" href="/user/User_Order_History">주문 내역 보기</a></li>
+    					<li><a class="dropdown-item" href="/user/CheckSession?str=User_Order_History">주문 내역 보기</a></li>
     					<li><a class="dropdown-item" href="/user/CheckSession?str=User_Edit">회원 정보 수정</a></li>
   					</ul>
 				</div>

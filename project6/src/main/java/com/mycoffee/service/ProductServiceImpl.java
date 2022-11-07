@@ -47,4 +47,10 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.getlist1(category);
 	}
 
+	@Override
+	public ProductJoinVO get2(String category, int tem, int cap) {
+		//log.info(mapper.get2(category, tem, cap));
+		return mapper.get2(category, tem, cap);
+	}
+
 }

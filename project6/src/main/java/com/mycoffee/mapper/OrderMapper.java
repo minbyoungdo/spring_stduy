@@ -18,4 +18,6 @@ public interface OrderMapper {
 	public OrderVO get(String oid);
 	//select list
 	public List<OrderVO> getlist(String oid);
+	public int countlist(String userid);
+	public int countstatus(String userid, int status);
 }

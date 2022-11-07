@@ -46,4 +46,14 @@ public class OrderServiceImpl implements OrderService{
 		return null;
 	}
 
+	@Override
+	public int countlist(String userid) {
+		return mapper.countlist(userid);
+	}
+
+	@Override
+	public int countstatus(String userid, int status) {
+		return mapper.countstatus(userid, status);
+	}
+
 }

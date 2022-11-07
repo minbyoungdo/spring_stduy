@@ -20,4 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tbl_product_category pc join tbl_product p on pc.pcategory=p.pcategory
 		where pc.pcategory=#{category}
 	</select>
+	<select id="get2" resultType="com.mycoffee.domain.ProductJoinVO">
+			select pc.pcategory,pname,ptype ,discription ,calorie ,fat ,sugars ,sodium ,caffeine ,imagefile ,pc.registdate ,
+		pid ,temperature ,capacity ,price ,onsale
+		from tbl_product_category pc join tbl_product p on pc.pcategory=p.pcategory
+		where pc.pcategory=#{category} and temperature =#{tem} and capacity =#{cap}
+	</select>
 </mapper>

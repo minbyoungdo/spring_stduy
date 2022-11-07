@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-
 <%@ page import = "org.springframework.ui.Model" %>
 <%@ page import ="com.mycoffee.domain.ProductJoinVO" %>
 <!DOCTYPE html>
@@ -28,7 +27,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="card-body" style="back-ground:blue;">
-					<form name="order" class="form-horizontal" action="/user/User_Order"method="post" onsubmit="return check()">
+					<form name="order" class="form-horizontal" method="get" action="/user/User_Order">
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         	<thead>
@@ -71,8 +70,8 @@
                                 			%>
                                 				<td>
                                 					<select>
-													<option value="cold" name ="tem" selected>cold</option>
-													<option value="hot" name="tem">hot</option>
+													<option value="cold" id="tem" name ="tem" selected>cold</option>
+													<option value="hot" id="tem" name="tem">hot</option>
 													</select>
                                 				</td>
                                 			<%
@@ -81,7 +80,7 @@
                                 				%>
                                 				<td>
                                 					<select>
-													<option value="cold" name ="tem" selected>cold</option>
+													<option value="cold" id="tem" name ="tem" selected>cold</option>
 													</select>
                                 				</td>
                                 			<%	
@@ -90,7 +89,7 @@
                                 			%>
                                 				<td>
                                 					<select>
-													<option value="hot" name="tem" selected>hot</option>
+													<option value="hot" id="tem" name="tem" selected>hot</option>
 													</select>
                                 				</td>
                                 			<%	
@@ -105,6 +104,7 @@
                                 		boolean  shot =false;//237
                                 		boolean tall = false;//355
                                 		boolean grande = false;//473
+                                		boolean venti = false;//591
                                 		while(product.get(a) != null)
                                 		{
                                 			if(product.get(a).getCapacity()==237)
@@ -113,6 +113,8 @@
                                 			{tall= true;}
                                 			else if(product.get(a).getCapacity()==437)
                                 			{grande = true;}
+                                			else if(product.get(a).getCapacity()==591)
+                                			{venti = true;}
                                 			if(product.size() == a+1)
                                 			{a=0;break;}
                                 			a++;
@@ -124,19 +126,27 @@
                                 			if(shot == true)
                                 			{
                                 			%>
-												<option value="237" name ="cap">237</option>
+												<option value="237" name ="cap">(Short)237 ml</option>
                                 			<% 
                                 			}
                                 			if(tall == true)
                                 			{
                                 			%>
-												<option value="355" name ="cap">355</option>
+												<option value="355" name ="cap">(Tall) 355 ml</option>
                             				<% 
                                 			}
                                 			if(grande==true)
                                 			{
                                 			%>
-												<option value="437" name ="cap">437</option>
+												<option value="437" name ="cap">(Grande) 437 ml</option>
+                            				<% 
+                                			}
+                                			%>
+                                			<% 
+                                			if(venti==true)
+                                			{
+                                			%>
+												<option value="591" name ="cap">(Venti) 591 ml</option>
                             				<% 
                                 			}
                                 			%>
@@ -148,15 +158,16 @@
                                 		<td><%= product.get(0).getPrice() %></td>
                                 </tr>
                            </thead>
-                       </table>
-                       </div>
-					</form>
+                    </table>
+                    </div>
+					
                	 	<div class="form-group  row">
 						<div class="col-sm-offset-2 col-sm-10 ">
-							<input type="submit" class="btn btn-outline-primary " value="장바구니에 담기" > 
-							<input type="button" class="btn btn-outline-danger "  value="취소"  onclick="location.href='/user/User_Drink_Menu"'>
+							<input type="button" class="btn btn-outline-primary " value="장바구니에 담기" onclick="location.href='/user/User_Order?category=<%=product.get(0).getPcategory()%>&tem=0&cap=437'"> 
+							<input type="button" class="btn btn-outline-danger "  value="취소"  onclick="location.href='/user/User_Drink_Menu'">
 						</div>
 					</div>
+				</form>
                 </div>
 			</div>
 		</div>

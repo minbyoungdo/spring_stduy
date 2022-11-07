@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycoffee.domain.BoardVO;
 import com.mycoffee.domain.Criteria;
+import com.mycoffee.domain.ProductJoinVO;
 import com.mycoffee.domain.UserVO;
 import com.mycoffee.service.BoardService;
 import com.mycoffee.service.UserService;
@@ -55,17 +56,32 @@ public class UserController {
 	}
 	//로그인 햇는지 세션으로 확인하기
 	@GetMapping("/CheckSession")
-	public String CheckSession(String str,HttpServletRequest request)
+	public String CheckSession(String str,HttpServletRequest request, Model model)
 	{
 		HttpSession session = request.getSession(false);
-		if(session != null)
+		if(session.getAttribute("sessionId")!= null)
 		{
-			String str2="redirect:/user/"+str;
-			return str2;
+				String str2="redirect:/user/"+str;
+				return str2;
 		}
 		else
 		{
-			return "redirect:/user/User_Main_Home";
+			return "redirect:/user/User_Menu";
+		}
+	}
+	@GetMapping("/CheckSession2")
+	public String CheckSession2(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")int tem,@RequestParam("cap")int cap,HttpServletRequest request, Model model)
+	{
+		log.info("가나다라마바사아파그랴파구모야다글뫄ㅣ"+tem+category+cap);
+		HttpSession session = request.getSession(false);
+		if(session.getAttribute("sessionId")!= null)
+		{
+				String str2="redirect:/user/"+str;
+				return str2;
+		}
+		else
+		{
+			return "redirect:/user/User_Menu";
 		}
 	}
 	 

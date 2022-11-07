@@ -16,4 +16,5 @@ public interface UserMapper {
 	public int update(UserVO user);
 	public int checkid(@Param("userid")String userid);
 	public int checkuser(@Param("userid")String userid, @Param("password")String password);
+	
 }
