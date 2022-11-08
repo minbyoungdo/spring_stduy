@@ -26,7 +26,7 @@
 			<img src="../resources/img/<c:out value="${product.imagefile}" />" style="width:250px; height:375px;margin-top:10px;margin-bottom:10px;">
 			</div>
 			<div class="col-md-4">
-				<div class="card-body" style="back-ground:blue;">
+				<div class="card-body">
 					<form name="order" class="form-horizontal" method="get" action="/user/User_Order">
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -163,7 +163,7 @@
 					
                	 	<div class="form-group  row">
 						<div class="col-sm-offset-2 col-sm-10 ">
-							<input type="button" class="btn btn-outline-primary " value="장바구니에 담기" onclick="location.href='/user/User_Order?category=<%=product.get(0).getPcategory()%>&tem=0&cap=437'"> 
+							<input type="button" class="btn btn-outline-primary " value="장바구니에 담기" onclick="location.href='/user/User_Order?str=Checksession2&category=<%=product.get(0).getPcategory()%>&tem=0&cap=437'"> 
 							<input type="button" class="btn btn-outline-danger "  value="취소"  onclick="location.href='/user/User_Drink_Menu'">
 						</div>
 					</div>

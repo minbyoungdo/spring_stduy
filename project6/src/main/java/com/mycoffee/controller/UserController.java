@@ -32,7 +32,7 @@ public class UserController {
 	private UserService service;
 	
 	 @GetMapping({"/User_Main_Home","/User_SignUp","/User_Edit","User_Login",
-		 "/User_Order_History","User_Shopping_Basket"}) 
+		 "/User_Order_History"}) 
 	  public void Nomarl() 
 	 {
 		 
@@ -56,7 +56,7 @@ public class UserController {
 	}
 	//로그인 햇는지 세션으로 확인하기
 	@GetMapping("/CheckSession")
-	public String CheckSession(String str,HttpServletRequest request, Model model)
+	public String CheckSession(String str,HttpServletRequest request)
 	{
 		HttpSession session = request.getSession(false);
 		if(session.getAttribute("sessionId")!= null)
@@ -69,20 +69,18 @@ public class UserController {
 			return "redirect:/user/User_Menu";
 		}
 	}
+	//장바구니 담기 버튼에서만 현재 사용중 
 	@GetMapping("/CheckSession2")
-	public String CheckSession2(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")int tem,@RequestParam("cap")int cap,HttpServletRequest request, Model model)
+	public String CheckSession2(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")int tem,@RequestParam("cap")int cap,HttpServletRequest request)
 	{
-		log.info("가나다라마바사아파그랴파구모야다글뫄ㅣ"+tem+category+cap);
+		//log.info("가나다라마바사아파그랴파구모야다글뫄ㅣ"+tem+category+cap);
+		//System.out.println("가나다라마바사아파그랴파구모야다글뫄ㅣ"+str+" "+ tem+" "+cap);
 		HttpSession session = request.getSession(false);
-		if(session.getAttribute("sessionId")!= null)
-		{
-				String str2="redirect:/user/"+str;
-				return str2;
-		}
-		else
-		{
-			return "redirect:/user/User_Menu";
-		}
+		
+		if(session.getAttribute("sessionId") == null)			
+			return "redirect:/user/User_Login";
+				
+		return "redirect:/user/"+str +"?category="+category+"&tem="+tem+"&cap="+cap;
 	}
 	 
 	@PostMapping("/login")

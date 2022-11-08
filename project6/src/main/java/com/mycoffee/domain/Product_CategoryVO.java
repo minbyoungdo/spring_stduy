@@ -9,7 +9,7 @@ public class Product_CategoryVO {
 	private String pcategory;
 	private String pname;
 	private int ptype;
-	private String discription;
+	private String description;
 	private int calorie;
 	private int fat;
 	private int sugars;

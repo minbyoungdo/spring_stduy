@@ -13,4 +13,5 @@ public interface ProductService {
 	public List<ProductJoinVO> getlist1(String category);
 	public int getcount();
 	public ProductJoinVO get2(String category, int tem, int cap);
+	public List<ProductJoinVO> get3(String pid);
 }

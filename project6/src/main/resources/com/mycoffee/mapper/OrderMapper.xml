@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into
 				tbl_order (oid,userid,totalprice,status,registdate,updatedate)
 			values
-				(#{oid}, #{userid}, #{totalprice},#{stauts},sysdate,sysdate)
+				(#{oid}, #{userid}, #{totalprice},#{status},sysdate,sysdate)
 	</insert>
 	<update id="updateorder">
 		
@@ -31,5 +31,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from tbl_order
 			where userid=#{userid} and status=#{status}
 	</select>
+	<select id="selectstatus">
+		select * from tbl_order
+			where userid=#{userid}
+	</select>
+	<select id="selectstatus0" resultType="com.mycoffee.domain.OrderVO">
+		select * from tbl_order
+		 where status=0 and userid=#{userid}
+	</select>
 	
+	
+	<!-- oder-detail -->
+	<insert id="insertOrderdetail">
+		insert into
+			tbl_order_detail(oid,pid,pieces,price,registdate,updatedate)
+				values(#{oid},#{pid},1,#{price},sysdate,sysdate)
+	</insert>
+	<select id ="getodlist" resultType="com.mycoffee.domain.Order_detailVO">
+		select * from tbl_order_detail
+			where oid=#{oid} and pid={#pid}
+	</select>
+	<select id ="select_detail"  resultType="com.mycoffee.domain.Order_detailVO">
+		select * from tbl_order_detail
+			where oid=#{oid}
+	</select>
+	<select id="select_detail2" resultType="com.mycoffee.domain.Order_detailVO">
+		select * from tbl_order_detail
+			where oid=#{oid} and pid=#{pid}
+	</select>
 </mapper>
