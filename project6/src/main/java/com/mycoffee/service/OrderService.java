@@ -21,5 +21,8 @@ public interface OrderService {
 	public void insertOrder_detail(String oid,String pid, int price);
 	public List<Order_detailVO> getodlist(String oid, String pid);
 	public Order_detailVO selectstatus_detail(String oid);
+	public List<Order_detailVO> selectstatus_detailList(String oid);
 	public Order_detailVO selectstatus_detail2(String oid, String pid);
+	public int getpieces(@Param("oid")String oid,@Param("pid")String pid);
+	public void piecesupdate(String oid, String pid, int num);
 }

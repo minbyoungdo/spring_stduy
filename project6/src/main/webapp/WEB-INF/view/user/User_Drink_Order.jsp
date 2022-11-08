@@ -14,6 +14,13 @@
 	//System.out.print("<<<<<<<<<<<<>>>>>>>>>>>>>><<<<<<<<<<<>>>>>>>>>>>>"+product.get(1));
 %>
 <meta charset="utf-8">
+<script type="text/javascript">
+		function change() {
+			 var target = document.getElementById("cap");
+			consol.log(123123);
+			}
+		}
+	</script>
 </head>
 <body>
 <%@ include file="./User_menu.jsp" %>
@@ -54,6 +61,7 @@
                                 			int index=0;
                                 			int hot=0;
                                 			int cold=0;
+                                			int ttmp=3;
                                 			String s_hot = "hot";
                                 			String s_cold="ice";
                                 			while(product.get(index) !=null)
@@ -69,9 +77,9 @@
                                 			if(cold ==1 && hot ==1){
                                 			%>
                                 				<td>
-                                					<select>
-													<option value="cold" id="tem" name ="tem" selected>cold</option>
-													<option value="hot" id="tem" name="tem">hot</option>
+                                					<select name="tem">
+													<option value="0" selected>cold</option>
+													<option value="1" >hot</option>
 													</select>
                                 				</td>
                                 			<%
@@ -79,8 +87,8 @@
                                 			else if(cold ==1){
                                 				%>
                                 				<td>
-                                					<select>
-													<option value="cold" id="tem" name ="tem" selected>cold</option>
+                                					<select name="tem">
+													<option value="0" id="tem" name ="tem" selected>cold</option>
 													</select>
                                 				</td>
                                 			<%	
@@ -88,8 +96,8 @@
                                 			else if(hot ==1){
                                 			%>
                                 				<td>
-                                					<select>
-													<option value="hot" id="tem" name="tem" selected>hot</option>
+                                					<select name="tem">
+													<option value="1" id="tem" name="tem" selected>hot</option>
 													</select>
                                 				</td>
                                 			<%	
@@ -101,6 +109,7 @@
                                 	<%
                                 		int a=0;
                                 		int start=1;
+                                		int ctmp=0;
                                 		boolean  shot =false;//237
                                 		boolean tall = false;//355
                                 		boolean grande = false;//473
@@ -121,24 +130,24 @@
                                 		}
                                 	%>
                                 	<td>
-                                		<select>
+                                		<select id="cap" name ="cap" onchange="change()">
                                 			<%	
                                 			if(shot == true)
                                 			{
                                 			%>
-												<option value="237" name ="cap">(Short)237 ml</option>
+												<option value="237" >(Short)237 ml</option>
                                 			<% 
                                 			}
                                 			if(tall == true)
                                 			{
                                 			%>
-												<option value="355" name ="cap">(Tall) 355 ml</option>
+												<option value="355" <c:if test ="${cap eq '355'}">selected="selected"</c:if>>(Tall) 355 ml</option>
                             				<% 
                                 			}
                                 			if(grande==true)
                                 			{
                                 			%>
-												<option value="437" name ="cap">(Grande) 437 ml</option>
+												<option value="437">(Grande) 437 ml</option>
                             				<% 
                                 			}
                                 			%>
@@ -146,7 +155,7 @@
                                 			if(venti==true)
                                 			{
                                 			%>
-												<option value="591" name ="cap">(Venti) 591 ml</option>
+												<option value="591">(Venti) 591 ml</option>
                             				<% 
                                 			}
                                 			%>

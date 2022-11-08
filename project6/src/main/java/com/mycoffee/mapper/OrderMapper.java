@@ -32,5 +32,8 @@ public interface OrderMapper {
 	//select
 	public Order_detailVO getodlist(@Param("oid")String oid,@Param("pid")String pid);
 	public Order_detailVO select_detail(String oid);
+	public List<Order_detailVO> select_detailList(String oid);
 	public Order_detailVO select_detail2(@Param("oid")String oid,@Param("pid")String pid);
+	public int getpieces(@Param("oid")String oid,@Param("pid")String pid);
+	public void piecesupdate(@Param("oid")String oid, @Param("pid")String pid, @Param("num")int num);
 }

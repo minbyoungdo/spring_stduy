@@ -44,8 +44,6 @@ public class OrderController
 		//2주문내역 자체가 없는 경우 당연히 oid 없을테니 생성
 		//suerid로 검색하고 count값 받아오기
 		//3주문내역은 있지만 주문 작성(0)상태가 없는 경우 oid 생성
-		//4주문내역도 없고 주문작성상태도 없는 경우?
-		//userid로 검색하고 없으면
 		ProductJoinVO p =pservice.get2(category, tem, cap);//프로덕트 검색
 		HttpSession session = request.getSession(false);//세션 확인
 		UserVO user = (UserVO)session.getAttribute("sessionId");//유저값 세션으로 가져오기
@@ -67,6 +65,15 @@ public class OrderController
 		//1.주문내역이 있고 현재 오더 중에 주문 작성(0) 상태가 있다면 oid 생성 x
 		else if(service.countlist(user.getUserid()) !=0 &&service.countstatus(user.getUserid(), 0) !=0)
 		{
+			OrderVO order =service.selectstatus0(user.getUserid());
+			//이미 주문한 pid일 경우 넘어가기.
+			if(service.selectstatus_detail(order.getOid()).getPid()!=p.getPid())
+			{
+				System.out.println(":::::::::::::::::::::::::::::::::"+order);
+				//service.insertOrder(order.getOid(),user.getUserid(),p.getPrice(),0);
+				service.insertOrder_detail(order.getOid(), p.getPid(), p.getPrice());
+				return "redirect:/user/User_Main_Home";
+			}
 			return "redirect:/user/User_Main_Home";
 		}
 		//3.주문내역이 있고 오더 중 주문 작성 상태가 없어서 oid 생성 필요
@@ -75,7 +82,8 @@ public class OrderController
 			Date now = new Date();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 			String oid = formatter.format(now);
-			System.out.println(oid);
+			//service.insertOrder(oid,user.getUserid(),p.getPrice(),0);
+			//service.insertOrder_detail(oid, p.getPid(), p.getPrice());
 			return "redirect:/user/User_Drink_Menu";
 		}
 		return "redirect:/user/User_Drink_Menu";
@@ -86,39 +94,44 @@ public class OrderController
 	{
 		HttpSession session = request.getSession(false);//세션 확인
 		UserVO user = (UserVO)session.getAttribute("sessionId");//유저값 세션으로 가져오기
-		//System.out.println("가나다라가나다라다나가"+ user);
-		//System.out.println("가나다라가나다라다나가"+ service.countstatus(user.getUserid(), 0));
 		//해당 아이디의 목록 중
 		if(service.countstatus(user.getUserid(), 0)!=0)
 		{
-			//System.out.println("가나다라가나다라다나가"+ service.selectstatus0());
-			//System.out.println("가나다라가나다라다나가"+ service.selectstatus_detail(service.selectstatus0().getOid()));
 			model.addAttribute("order",service.selectstatus0(user.getUserid()));
-			model.addAttribute("od",service.selectstatus_detail(service.selectstatus0(user.getUserid()).getOid()));
+			model.addAttribute("od",service.selectstatus_detailList(service.selectstatus0(user.getUserid()).getOid()));
 			request.setAttribute("order2", service.selectstatus0(user.getUserid()));
-			request.setAttribute("od2", service.selectstatus_detail(service.selectstatus0(user.getUserid()).getOid()));
-			request.setAttribute("product", pservice.get3(service.selectstatus_detail(service.selectstatus0(user.getUserid()).getOid()).getPid()));
+			request.setAttribute("od2", service.selectstatus_detailList(service.selectstatus0(user.getUserid()).getOid()));
+			//request.setAttribute("product", pservice.get3(service.selectstatus_detailList(service.selectstatus0(user.getUserid()).getOid())));
 		}
 	}
 	@GetMapping("/piecesChange")
-	public void piecesChage(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")String tem,@RequestParam("cap")String cap,@RequestParam("pid")String pid, HttpServletRequest request)
+	public String piecesChage(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")String tem,@RequestParam("cap")String cap,@RequestParam("pid")String pid, HttpServletRequest request)
 	{
 		HttpSession session = request.getSession(false);//세션 확인
 		UserVO user = (UserVO)session.getAttribute("sessionId");//유저아이디
 		service.selectstatus0(user.getUserid()).getOid();//oid
 		service.selectstatus_detail2(service.selectstatus0(user.getUserid()).getOid(), pid);
-		if(str=="plus")
+		int i=service.getpieces(service.selectstatus0(user.getUserid()).getOid(),pid);
+		int a = i+1;
+		int b = i-1;
+		if(str.equals("plus"))
 		{
+			System.out.println("가나다라마바사아자다"+service.selectstatus0(user.getUserid()).getOid());
+			service.piecesupdate(service.selectstatus0(user.getUserid()).getOid(), pid, a);
+			return "redirect:/user/CheckSession?str=User_Shopping_Basket";
 		}
 		else
 		{
 			if(service.selectstatus_detail2(service.selectstatus0(user.getUserid()).getOid(), pid).getPieces()== 0)
 			{
 				//delete 할수 있도록
+				return "redirect:/user/CheckSession?str=User_Shopping_Basket";
 			}
-			else
+			else//갯수가 0이 아닐때
 			{
 				//정상적으로
+				service.piecesupdate(service.selectstatus0(user.getUserid()).getOid(), pid, b);
+				return "redirect:/user/CheckSession?str=User_Shopping_Basket";
 			}
 		}
 	}

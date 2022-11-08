@@ -74,5 +74,17 @@ public class OrderServiceImpl implements OrderService{
 	public Order_detailVO selectstatus_detail2(String oid, String pid) {
 		return mapper.select_detail2(oid, pid);
 	}
+	@Override
+	public void piecesupdate(String oid, String pid, int num) {
+		mapper.piecesupdate(oid, pid, num);
+	}
+	@Override
+	public int getpieces(String oid, String pid) {
+		return mapper.getpieces(oid, pid);
+	}
+	@Override
+	public List<Order_detailVO> selectstatus_detailList(String oid) {
+		return mapper.select_detailList(oid);
+	}
 
 }

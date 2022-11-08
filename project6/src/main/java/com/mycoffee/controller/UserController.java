@@ -66,15 +66,13 @@ public class UserController {
 		}
 		else
 		{
-			return "redirect:/user/User_Menu";
+			return "redirect:/user/User_Main_Home";
 		}
 	}
 	//장바구니 담기 버튼에서만 현재 사용중 
 	@GetMapping("/CheckSession2")
 	public String CheckSession2(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")int tem,@RequestParam("cap")int cap,HttpServletRequest request)
 	{
-		//log.info("가나다라마바사아파그랴파구모야다글뫄ㅣ"+tem+category+cap);
-		//System.out.println("가나다라마바사아파그랴파구모야다글뫄ㅣ"+str+" "+ tem+" "+cap);
 		HttpSession session = request.getSession(false);
 		
 		if(session.getAttribute("sessionId") == null)			

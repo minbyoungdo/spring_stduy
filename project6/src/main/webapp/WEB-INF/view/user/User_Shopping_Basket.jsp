@@ -10,8 +10,8 @@
 <head>
 <meta charset="utf-8">
 <%
-	OrderVO order2 = (OrderVO)request.getAttribute("order2");
-	Order_detailVO od2=(Order_detailVO)request.getAttribute("od2");
+	List<OrderVO> order2 = (List<OrderVO>)request.getAttribute("order2");
+	List<Order_detailVO> od2=(List<Order_detailVO>)request.getAttribute("od2");
 	List<ProductJoinVO> product =(List)request.getAttribute("product");
 	//System.out.println(order2+";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"+od2);
 %>
@@ -29,18 +29,25 @@
   		<div class="col-md-8"align="left"><label >주문번호 : <c:out value="${order.oid}"/></label></div>
   		<div class="col-md-4" align="right">주문상태 : <c:out value="${order.status}"/></div>
   		</div>
-  		<div class="row">
+  		<div class="row" style="border-top:1px solid;padding:0px;margin:0px;">
   		<div class="col-md-8" align="left"><label>회원 아이디 : <c:out value="${order.userid}"/></label></label></div>
   		<div class="col-md-4" align="right">주문 시작 시간 : <c:out value="${order.registdate}"/></div>
   		</div>
-  		<div class="card-body">
+  		<div class="card-body" style="border-top:1px solid" align="left">
   			메뉴명 : <%=product.get(0).getPname()%>
-  			선택용량 : <%=product.get(0).getCapacity() %>
+  			선택용량 : <%=product.get(0).getCapacity() %> (ml)
   			냉/온 : <%=product.get(0).getTemperature() %>
-  			단일가격 : <%=product.get(0).getPrice() %>
-  			<button type="button" class="btn btn-danger" action="/user/piecesChange/minus">-</button>
-  			갯수 : <%=od2.getPieces() %>
-  			<button type="button" class="btn btn-primary"action="/user/piecesChange/plus">+</button>
+  			단일가격 : <%=product.get(0).getPrice() %> (원)
+  			<input type="button" class="btn btn-danger" value="  -  " onclick="location.href='/user/piecesChange?str=minus&category=<%=product.get(0).getPcategory()%>&tem=<%=product.get(0).getTemperature()%>&cap=<%=product.get(0).getCapacity()%>&pid=<%=od2.get(0).getPid()%>'">
+  			갯수 : <%=od2.get(0).getPieces() %>
+  			<input type="button" class="btn btn-primary" value="  +  " onclick="location.href='/user/piecesChange?str=plus&category=<%=product.get(0).getPcategory()%>&tem=<%=product.get(0).getTemperature()%>&cap=<%=product.get(0).getCapacity()%>&pid=<%=od2.get(0).getPid()%>'">
+  		</div>
+  		<div align="right" style="border:1px solid">
+  			구매 총액 : <%= order2.get(0).getTotalprice() %> 원 입니다.
+  		</div>
+  		<div class="row" style="border-top:1px solid;padding:0px;margin:0px;">
+  			<input type="button" class="btn btn-primary" value="주문하기">
+  			<input type="button" class="btn btn-danger" value="취소하기">
   		</div>
 </div>
 <div class="col-md-6"></div>
