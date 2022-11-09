@@ -39,8 +39,12 @@ public class OrderServiceImpl implements OrderService{
 	}
 	@Override
 	public List<OrderVO> getlist() {
-		mapper.getlist(null);
+		mapper.getlist();
 		return null;
+	}
+	@Override
+	public List<OrderVO> getlist2(String userid) {
+		return mapper.getlist2(userid);
 	}
 	@Override
 	public int countlist(String userid) {
@@ -51,12 +55,21 @@ public class OrderServiceImpl implements OrderService{
 		return mapper.countstatus(userid, status);
 	}
 	@Override
+	public int countstatus2(String userid) {
+		return mapper.countstatus2(userid);
+	}
+	@Override
 	public OrderVO selectstatus0(String userid) {
 		return mapper.selectstatus0(userid);
 	}
+	@Override
+	public List<OrderVO> selectstatus0List(String userid) {
+		return mapper.selectstatus0List(userid);
+	}
+	
+	
 	
 	//detail
-	
 	@Override
 	public List<Order_detailVO> getodlist(String oid, String pid) {
 		return (List<Order_detailVO>) mapper.getodlist(oid, pid);
@@ -67,9 +80,13 @@ public class OrderServiceImpl implements OrderService{
 	}
 	@Override
 	public Order_detailVO selectstatus_detail(String oid) {
-		
 		return mapper.select_detail(oid);
 	}
+	@Override
+	public List<Order_detailVO> selectstatus_detailList(String oid) {
+		return mapper.select_detailList(oid);
+	}
+
 	@Override
 	public Order_detailVO selectstatus_detail2(String oid, String pid) {
 		return mapper.select_detail2(oid, pid);
@@ -83,8 +100,20 @@ public class OrderServiceImpl implements OrderService{
 		return mapper.getpieces(oid, pid);
 	}
 	@Override
-	public List<Order_detailVO> selectstatus_detailList(String oid) {
-		return mapper.select_detailList(oid);
+	public List<String> getpidList(String oid) {
+		return mapper.getpidList(oid);
+	}
+	@Override
+	public void totalpriceupdate(String oid,int addprice) {
+		mapper.totalpriceupdate(oid,addprice);
+	}
+	@Override
+	public void statusupdate(String oid,int status) {
+		mapper.statusupdate(oid,status);
+	}
+	@Override
+	public void orderdateupdate(String oid) {
+		mapper.orderdateupdate(oid);
 	}
 
 }

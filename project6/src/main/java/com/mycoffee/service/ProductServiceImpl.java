@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductJoinVO> get3(String pid) {
+	public ProductJoinVO get3(String pid) {
 		return mapper.get3(pid);
 	}
 

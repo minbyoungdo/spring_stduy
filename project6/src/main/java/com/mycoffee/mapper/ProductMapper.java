@@ -16,5 +16,5 @@ public interface ProductMapper {
 	public int getcount();
 	
 	public ProductJoinVO get2(@Param("category")String category,@Param("tem")int tem, @Param("cap")int cap);
-	public List<ProductJoinVO> get3(String pid);
+	public ProductJoinVO get3(String pid);
 }

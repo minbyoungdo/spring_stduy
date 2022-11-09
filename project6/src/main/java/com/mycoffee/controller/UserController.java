@@ -31,8 +31,7 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
 	private UserService service;
 	
-	 @GetMapping({"/User_Main_Home","/User_SignUp","/User_Edit","User_Login",
-		 "/User_Order_History"}) 
+	 @GetMapping({"/User_Main_Home","/User_SignUp","/User_Edit","User_Login"}) 
 	  public void Nomarl() 
 	 {
 		 

@@ -65,11 +65,6 @@ public class ProductController {
 	@GetMapping("/User_Order")
 	public String get2(@RequestParam("category") String category,@RequestParam("tem") int tem,@RequestParam("cap") int cap,RedirectAttributes rttr,Model model,HttpServletRequest request)
 	{
-		//log.info(service.get2(category,tem,cap));
-		//model.addAttribute("product",service.get2(category,tem,cap));
-		//request.setAttribute("product1", service.get2(category,tem,cap));
-		//service.get2(category,tem,cap);
-		System.out.println("가나다라마바사아파그랴파구모야다글뫄ㅣ"+service.get2(category,tem,cap));
 		return "redirect:/user/CheckSession2?str=InsertOrder&category="+category+"&tem="+tem +"&cap="+cap;
 		
 	}
