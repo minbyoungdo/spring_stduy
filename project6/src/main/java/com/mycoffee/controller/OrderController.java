@@ -67,8 +67,27 @@ public class OrderController
 		else if(service.countlist(user.getUserid()) !=0 &&service.countstatus(user.getUserid(), 0) !=0)
 		{
 			OrderVO order =service.selectstatus0(user.getUserid());
-			//이미 주문한 pid일 경우 넘어가기.
-			if(service.selectstatus_detail(order.getOid()).getPid()!=p.getPid())
+			
+			//이미 주문한 pid일 경우 넘겨받기.
+			System.out.println(service.selectstatus_detailList(order.getOid()));
+			List<Order_detailVO> otlist = new ArrayList<Order_detailVO>();
+			List<String> pidlist = new ArrayList<String>();
+			boolean checkpid = false;
+			for(int i=0; i<service.selectstatus_detailList(order.getOid()).size();i++)
+			{
+				pidlist.add(service.selectstatus_detailList(order.getOid()).get(i).getPid());
+			}
+			for(int i=0; i<pidlist.size();i++)
+			{
+				if(pidlist.get(i).equals(p.getPid()))
+				{
+					checkpid = false;
+				}
+				else
+					checkpid = true;
+			}
+			//if(service.selectstatus_detail(order.getOid()).getPid()!=p.getPid())
+			if(checkpid==true)
 			{
 				service.insertOrder_detail(order.getOid(), p.getPid(), p.getPrice());
 				addprice=order.getTotalprice()+p.getPrice();
@@ -96,8 +115,11 @@ public class OrderController
 	{
 		HttpSession session = request.getSession(false);//세션 확인
 		UserVO user = (UserVO)session.getAttribute("sessionId");//유저값 세션으로 가져오기
-		//해당 아이디의 목록 중
-		if(service.countstatus(user.getUserid(), 0)!=0)
+		if(service.selectstatus0(user.getUserid()) == null)
+		{
+			System.out.println("아무것도 없는데요");
+		}
+		else if(service.countstatus(user.getUserid(), 0)!=0)
 		{
 			//System.out.println("가나다라가나다라다나가1"+service.getpidList(oid));
 			//service.getpidList(service.selectstatus0List(user.getUserid()).get(0).getOid()); //pid리스트 가져옴.
@@ -186,7 +208,7 @@ public class OrderController
 	{
 		HttpSession session = request.getSession(false);//세션 확인
 		UserVO user = (UserVO)session.getAttribute("sessionId");//유저값 세션으로 가져오기
-		System.out.println("가나다마마마마바바바사사사사라라라라"+service.selectstatus0(user.getUserid()).getOid());
+		//System.out.println("가나다마마마마바바바사사사사라라라라"+service.selectstatus0(user.getUserid()).getOid());
 		if(service.countstatus2(user.getUserid())!=0)
 		{
 			//orderlist
@@ -210,7 +232,7 @@ public class OrderController
 			request.setAttribute("otlist", otlist);
 			
 			//oid리스트
-			String oid = service.selectstatus0(user.getUserid()).getOid();//오더 아이디 구하기
+			//String oid = service.selectstatus0(user.getUserid()).getOid();//오더 아이디 구하기
 			List<String> oidList = new ArrayList<String>();
 			while((service.getlist2(user.getUserid()).get(index)) != null)
 			{
@@ -224,10 +246,11 @@ public class OrderController
 			//pidlist
 			
 			List<String> pidlist = new ArrayList<String>();
+
 			//service.getpidList(oid);//오더아이디로 프로덕트 아이디 리시트 구하기
 			while(oidList.get(index)!= null)
 			{
-				//pidlist.add(service.getpidList(oidList.get(index)));
+				pidlist.addAll(service.getpidList(oidList.get(index)));
 				index++;
 				if(oidList.size() == index)
 				{index =0;break;}

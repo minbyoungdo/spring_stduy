@@ -42,6 +42,7 @@ public class OrderServiceImpl implements OrderService{
 		mapper.getlist();
 		return null;
 	}
+	//status 0보다 큰 모든 order를 가져온다->주문내역에서 사용.
 	@Override
 	public List<OrderVO> getlist2(String userid) {
 		return mapper.getlist2(userid);

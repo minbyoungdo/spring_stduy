@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Select;
 import com.mycoffee.domain.UserVO;
 
 public interface UserMapper {
-	//@Select("select * from tbl_user")
 	public List<UserVO> getList();
 	public UserVO LoginUser(@Param("userid")String userid, @Param("password")String password);
 	public void insertUser(UserVO user);
