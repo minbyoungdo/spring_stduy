@@ -93,7 +93,7 @@
   		</div>
   		<div class="row" style="border-top:1px solid;padding:0px;margin:0px;">
   			<input type="button" class="btn btn-primary" value="주문하기" onclick="location.href='/user/Last_Order'">
-  			<input type="button" class="btn btn-danger" value="취소하기">
+  			<input type="button" class="btn btn-danger" value="취소하기"  onclick="location.href='/user/Order_0_Cancel'">
   		</div>
   		<%} %>
 	</div>

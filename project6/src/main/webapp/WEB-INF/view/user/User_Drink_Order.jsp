@@ -11,6 +11,8 @@
 <head>
 <%
 	List<ProductJoinVO> product =(List)request.getAttribute("list");
+	int tem= 0;
+	int cap= 237;
 	//System.out.print("<<<<<<<<<<<<>>>>>>>>>>>>>><<<<<<<<<<<>>>>>>>>>>>>"+product.get(1));
 %>
 <meta charset="utf-8">
@@ -34,7 +36,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="card-body">
-					<form name="order" class="form-horizontal" method="get" action="/user/User_Order">
+					<form name="order" class="form-horizontal" method="post" action="/user/User_Order?product=<%= product.get(0) %>&category=<%=product.get(0).getPcategory()%>">
 					<div class="table-responsive">
 					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         	<thead>
@@ -88,7 +90,7 @@
                                 				%>
                                 				<td>
                                 					<select name="tem">
-													<option value="0" id="tem" name ="tem" selected>cold</option>
+													<option value="0" selected>cold</option>
 													</select>
                                 				</td>
                                 			<%	
@@ -97,7 +99,7 @@
                                 			%>
                                 				<td>
                                 					<select name="tem">
-													<option value="1" id="tem" name="tem" selected>hot</option>
+													<option value="1"  selected>hot</option>
 													</select>
                                 				</td>
                                 			<%	
@@ -172,7 +174,7 @@
 					
                	 	<div class="form-group  row">
 						<div class="col-sm-offset-2 col-sm-10 ">
-							<input type="button" class="btn btn-outline-primary " value="장바구니에 담기" onclick="location.href='/user/User_Order?str=Checksession2&category=<%=product.get(0).getPcategory()%>&tem=0&cap=437'"> 
+							<input type="submit" class="btn btn-outline-primary " value="장바구니에 담기" > 
 							<input type="button" class="btn btn-outline-danger "  value="취소"  onclick="location.href='/user/User_Drink_Menu'">
 						</div>
 					</div>

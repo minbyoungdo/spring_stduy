@@ -9,11 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			values
 				(#{oid}, #{userid}, #{totalprice},#{status},sysdate,sysdate)
 	</insert>
-	<update id="updateorder">
-		
-	</update>
 	<delete id="deleteorder">
-	
+		delete tbl_order where oid=#{oid} and status=#{status}
 	</delete>
 	<select id="getlist" resultType="com.mycoffee.domain.OrderVO">
 		<![CDATA[select * from tbl_order
@@ -104,4 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			set orderdate=sysdate
 			where oid=#{oid}
 	</update>
+	<delete id="deleteorder_detail">
+		delete tbl_order_detail where oid=#{oid}
+	</delete>
 </mapper>

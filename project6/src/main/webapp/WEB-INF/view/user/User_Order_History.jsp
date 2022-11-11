@@ -17,7 +17,6 @@
 </head>
 <body>
 <%@ include file="./User_menu.jsp" %>
-
 <div class="container">
 	<div class="col-md-6"></div>
 	<div class="col-md-12">
@@ -76,10 +75,10 @@
 		 }
   				%>
   			<div align="right" style="border-top:1px solid;border-bottom:2px; solid">
-  				구매 총액 : <%= order2.get(0).getTotalprice() %> 원 입니다.
+  				구매 총액 : <%= order2.get(a).getTotalprice() %> 원 입니다.
   			</div>
   		</div>
-<%  } %>
+		<% }%>
   	</div>
 </div>
 </div>

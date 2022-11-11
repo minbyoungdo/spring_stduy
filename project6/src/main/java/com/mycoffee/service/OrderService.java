@@ -9,7 +9,7 @@ import com.mycoffee.domain.OrderVO;
 import com.mycoffee.domain.Order_detailVO;
 public interface OrderService {
 	public void insertOrder(String oid, String userid, int totalprice,int status);
-	public int deleteorder(OrderVO order);
+	public int deleteorder(String oid, int status);
 	public int updateorder(OrderVO order);
 	public int countlist(String userid);
 	public int countstatus(String userid, int status);
@@ -32,4 +32,6 @@ public interface OrderService {
 	public void totalpriceupdate(@Param("oid")String oid, @Param("addprice")int addprice);
 	public void statusupdate(String oid, int status);
 	public void orderdateupdate(String userid);
+	
+	public void deleteorder_detail(String oid);
 }

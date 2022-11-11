@@ -201,14 +201,24 @@ public class OrderController
 		
 		return "redirect:/user/User_Drink_Menu";
 	}
-	//주문 내역 들어가기
 	
+	//장바구니 내용 취소
+	@GetMapping("/Order_0_Cancel")
+	public String Order_0_Cancel(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession(false);//세션 확인
+		UserVO user = (UserVO)session.getAttribute("sessionId");//유저아이디
+		service.deleteorder_detail(service.selectstatus0(user.getUserid()).getOid());
+		service.deleteorder(service.selectstatus0(user.getUserid()).getOid(), 0);
+		return "redirect:/user/User_Shopping_Basket";
+	}
+	
+	//주문 내역 들어가기
 	@GetMapping("/User_Order_History")
 	public void User_Order_History(HttpServletRequest request)
 	{
 		HttpSession session = request.getSession(false);//세션 확인
 		UserVO user = (UserVO)session.getAttribute("sessionId");//유저값 세션으로 가져오기
-		//System.out.println("가나다마마마마바바바사사사사라라라라"+service.selectstatus0(user.getUserid()).getOid());
 		if(service.countstatus2(user.getUserid())!=0)
 		{
 			//orderlist
@@ -232,7 +242,6 @@ public class OrderController
 			request.setAttribute("otlist", otlist);
 			
 			//oid리스트
-			//String oid = service.selectstatus0(user.getUserid()).getOid();//오더 아이디 구하기
 			List<String> oidList = new ArrayList<String>();
 			while((service.getlist2(user.getUserid()).get(index)) != null)
 			{
@@ -255,10 +264,6 @@ public class OrderController
 				if(oidList.size() == index)
 				{index =0;break;}
 			}
-			System.out.println("가나다라ㅏ가가가가가가가가가가각"+pidlist);
-			System.out.println("가나다라ㅏ가가가가가가가가가가각"+oidList);
-			
-			
 			
 			List<ProductJoinVO> plist = new ArrayList<ProductJoinVO>();
 			//product리스트

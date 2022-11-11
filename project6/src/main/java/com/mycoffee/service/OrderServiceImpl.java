@@ -23,8 +23,8 @@ public class OrderServiceImpl implements OrderService{
 		mapper.insertOrder(oid, userid, totalprice,status);
 	}
 	@Override
-	public int deleteorder(OrderVO order) {
-		mapper.delete(null, null, null);
+	public int deleteorder(String oid, int status) {
+		mapper.deleteorder(oid, status);
 		return 0;
 	}
 	@Override
@@ -115,6 +115,10 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public void orderdateupdate(String oid) {
 		mapper.orderdateupdate(oid);
+	}
+	@Override
+	public void deleteorder_detail(String oid) {
+		mapper.deleteorder_detail(oid);
 	}
 
 }

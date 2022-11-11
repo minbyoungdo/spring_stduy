@@ -1,5 +1,6 @@
 package com.mycoffee.service;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
 import com.mycoffee.domain.UserVO;
@@ -62,5 +63,4 @@ public class UserServiceImpl implements UserService{
 		int count = umapper.checkuser(userid,password);
 		return count;
 	}
-
 }

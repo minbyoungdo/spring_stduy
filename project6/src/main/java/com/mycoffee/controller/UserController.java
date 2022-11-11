@@ -30,13 +30,11 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class UserController {
 	private UserService service;
-	
+	//아무기능이 없는 상태의 것들에 대한 것.
 	 @GetMapping({"/User_Main_Home","/User_SignUp","/User_Edit","User_Login"}) 
-	  public void Nomarl() 
-	 {
-		 
-		 
-	 }
+	  public void Nomarl() {}
+	 
+	 //진행 중 작동x
 	 @GetMapping("/alert")
 	 public String msg(String msg)
 	 {
@@ -53,7 +51,8 @@ public class UserController {
 			 return "redirect:/user/User_Login?msg=3";
 		 }
 	}
-	//로그인 햇는지 세션으로 확인하기
+	
+	 //로그인 햇는지 세션으로 확인하기
 	@GetMapping("/CheckSession")
 	public String CheckSession(String str,HttpServletRequest request)
 	{
@@ -68,7 +67,8 @@ public class UserController {
 			return "redirect:/user/User_Main_Home";
 		}
 	}
-	//장바구니 담기 버튼에서만 현재 사용중 
+	
+	//장바구니 담기 버튼에서만 현재 사용하는 세션.아이디 체크 함수
 	@GetMapping("/CheckSession2")
 	public String CheckSession2(@RequestParam("str")String str,@RequestParam("category")String category,@RequestParam("tem")int tem,@RequestParam("cap")int cap,HttpServletRequest request)
 	{
@@ -80,6 +80,7 @@ public class UserController {
 		return "redirect:/user/"+str +"?category="+category+"&tem="+tem+"&cap="+cap;
 	}
 	 
+	//로그인 함수
 	@PostMapping("/login")
 	public String login(@RequestParam("userid") String id,@RequestParam("password") String passwd, Model model,HttpServletRequest request)
 	{
@@ -154,9 +155,16 @@ public class UserController {
 	public String signup(UserVO user,RedirectAttributes rttr)
 	{
 		log.info("signup..");
-		service.insertUser(user);
-		rttr.addFlashAttribute("result", user.getUserid());
-		return "redirect:/user/User_Main_Home";
+		//같은 아이디 값을 가지는 유저의 count값이 0이면 회원가입 insert 실행
+		//아니면 메인화면으로 일단은 이동....
+		if(service.CheckId(user.getUserid())==0)
+		{
+			service.insertUser(user);
+			rttr.addFlashAttribute("result", user.getUserid());
+			return "redirect:/user/User_Main_Home";
+		}
+		else
+			return "redirect:/user/User_Main_Home";
 	}
 	//회원 정보 수정
 	@PostMapping("/useredit")
@@ -164,7 +172,6 @@ public class UserController {
 	{
 		//검색
 		log.info(user);
-		//model.addAttribute("user",service.CheckId(user.getUserid()));
 		//검색결과 true면 해당 회원 정부 수정
 		if(service.modify(user))
 		{
@@ -178,8 +185,11 @@ public class UserController {
 	}
 	//회원 탈퇴
 	@GetMapping("/userdelete")
-	public String userdelete(UserVO user)
+	public String userdelete(HttpServletRequest request)
 	{
+		HttpSession session = request.getSession(false);
+		UserVO user = (UserVO)session.getAttribute("sessionId");
+		System.out.println("가나다라마바사아자차카타파바"+user);
 		//검색
 		if(service.CheckUser(user.getUserid(), user.getPassword())==1)
 		{

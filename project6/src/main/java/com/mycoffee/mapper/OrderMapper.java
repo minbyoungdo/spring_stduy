@@ -14,6 +14,7 @@ public interface OrderMapper {
 	public void insertOrder(@Param("oid")String oid, @Param("userid")String userid,@Param("totalprice") int totalprice, @Param("status")int status);
 	//delete
 	public int delete(@Param("pcategory")String category, @Param("temperature")String temperature, @Param("capacity")String capacity);
+	public void deleteorder(@Param("oid")String oid, @Param("status")int status);
 	//update
 	public int update();
 	//select
@@ -45,4 +46,6 @@ public interface OrderMapper {
 	public void totalpriceupdate(@Param("oid")String oid, @Param("addprice")int addprice);
 	public void statusupdate(@Param("oid")String oid,@Param("status")int status);
 	public void orderdateupdate(@Param("oid")String oid);
+	//delete
+	public void deleteorder_detail(String oid);
 }

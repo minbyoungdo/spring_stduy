@@ -67,8 +67,8 @@ if (!document.forms[form].elements["uname"].value)
 			<div class="form-group  row">
 				<div class="col-sm-offset-2 col-sm-10 ">
 					<input type="submit" class="btn btn-primary " value="회원 정보 수정" > 
-					<input type="button" class="btn btn-default "   value="취소"  onclick="location.href='/user/User_Main_Home'">
-					<a href="user/delete" class="btn btn-danger">회원탈퇴</a>
+					<input type="button" class="btn btn-light "   value="취소"  onclick="location.href='/user/User_Main_Home'">
+					<a href="/user/userdelete" class="btn btn-danger">회원탈퇴</a>
 				</div>
 			</div>
 		</form>

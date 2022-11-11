@@ -62,9 +62,12 @@ public class ProductController {
 	 * service.get2(product.getPcategory(),product.getTemperature(),product.
 	 * getCapacity()); return "redirect:/user/User_Main_Home"; },@RequestParam("tem") int tem,@RequestParam("cap") int cap,
 	 */
-	@GetMapping("/User_Order")
-	public String get2(@RequestParam("category") String category,@RequestParam("tem") int tem,@RequestParam("cap") int cap,RedirectAttributes rttr,Model model,HttpServletRequest request)
-	{
+	@PostMapping("/User_Order")
+	public String get2(HttpServletRequest request)
+	{	
+		String category=request.getParameter("category");
+		String tem=request.getParameter("tem");
+		String cap=request.getParameter("cap");
 		return "redirect:/user/CheckSession2?str=InsertOrder&category="+category+"&tem="+tem +"&cap="+cap;
 		
 	}
