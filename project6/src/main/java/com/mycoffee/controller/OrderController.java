@@ -92,9 +92,9 @@ public class OrderController
 				service.insertOrder_detail(order.getOid(), p.getPid(), p.getPrice());
 				addprice=order.getTotalprice()+p.getPrice();
 				service.totalpriceupdate(order.getOid(), addprice);
-				return "redirect:/user/User_Main_Home";
+				return "redirect:/user/User_Drink_Menu";
 			}
-			return "redirect:/user/User_Main_Home";
+			return "redirect:/user/User_Drink_Menu";
 		}
 		//3.주문내역이 있고 오더 중 주문 작성 상태가 없어서 oid 생성 필요
 		else if(service.countlist(user.getUserid()) !=0 &&service.countstatus(user.getUserid(), 0) ==0)
@@ -163,7 +163,6 @@ public class OrderController
 		if(str.equals("plus"))
 		{
 			addprice=order.getTotalprice()+p.getPrice();
-			System.out.println("가나다라마바사아자다"+service.selectstatus0(user.getUserid()).getOid());
 			service.piecesupdate(service.selectstatus0(user.getUserid()).getOid(), pid, a);
 			service.totalpriceupdate(oid, addprice);
 			return "redirect:/user/CheckSession?str=User_Shopping_Basket";

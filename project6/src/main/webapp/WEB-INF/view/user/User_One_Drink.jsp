@@ -12,44 +12,57 @@
 <head>
 <%
 	List<ProductJoinVO> product =(List)request.getAttribute("list");
-	//System.out.print("<<<<<<<<<<<<>>>>>>>>>>>>>><<<<<<<<<<<>>>>>>>>>>>>"+product.get(1));
 %>
+<style>
+	th{width:150px;}
+	td{text-align:left;}
+</style>
+</head>
 <meta charset="utf-8">
 </head>
 <body>
 <%@ include file="./User_menu.jsp" %>
-<div class="card" align="center">
-		<div class="container row"  style="border:1px solid;width:100%;margin-right:20%;margin-left:20%;">
-			<div class="col-md-12" style="border:1px solid;width:100%;">
+<div class="card shadow-sm p-3 mb-5 bg-body rounded" align="center">
+		<div class="container row"  style="border:1px solid;width:100%;margin-right:20%;margin-left:20%;padding:0px;">
+			<div class="col-md-12" style="border:1px solid;width:100%;margin:0px;padding:0px;background-color:orange;">
 				<h3 class="form-signin-heading">상세 메뉴 설명</h3>
 			</div>
-			<div class ="col-md-8" style="width:350px;height:100%;border:1px solid;">
-			<img src="../resources/img/<c:out value="${product.imagefile}" />" style="width:250px; height:375px;margin-top:10px;margin-bottom:10px;">
+			<div class ="col-md-8" style="width:350px;height:548px;border:1px solid;margin-top: 18px;border-right:none;border-left:none;">
+				<img src="../resources/img/<c:out value="${product.imagefile}" />" style="width:250px; height:375px;margin-top:10px;margin-bottom:10px;">
 			</div>
-			<div class="col-md-4">
-				<div class="card-body" style="back-ground:blue;">
-					<div class="table-responsive">       
-					 	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			<div class="col-md-4" style="margin:0px;padding:0px;">
+				<div class="card-body" style="margin:0px;padding:0px;">
+					<div class="table-responsive"style="width:500px;padding:0px;margin:0px;">       
+					 	<table class="table" id="dataTable" cellspacing="0">
                         	<thead>
-                            	<tr>
-                            		<th>항목</th>
-                            			<td><%= product.get(0).getPcategory() %></td>
+                           		<tr align ="center" valign="middle">
+                            		<th style="background-color: silver;">메뉴 명</th>
+                           				 <td  colspan = "3" span><h5><strong><i><%= product.get(0).getPname() %></i></strong></h5></td>
                             	</tr>
-                           		<tr>
-                            		<th>메뉴 명</th>
-                           				 <td><%= product.get(0).getPname() %></td>
+                            	<tr align ="center" valign="middle">
+                            		<th style="background-color: silver;padding-top: 0px;" >
+                            			<h6 align ="center" valign="middle" >설명</h6>
+                            		</th>
+                            			<td colspan = "3" span><%=product.get(0).getDescription() %></td>
                             	</tr>
-                                <tr>
-                                			<th>함량(100g 기준)</th>
-                                			<td> 지방 : <%= product.get(0).getFat() %>,
-                                			 당 : <%= product.get(0).getSugars() %>, 나트륨 : <%= product.get(0).getSodium() %>,카페인 : <%= product.get(0).getCaffeine()%></td>
-                                		</tr>
-                                		<tr>
-                                			<th>칼로리</th>
-                                			<td><%= product.get(0).getCalorie() %> kcal</td>
-                                		</tr>                                 		
-                                		<tr>
-                                			<th>냉/온</th>
+                            	<tr  align ="center" valign="middle">
+                                	<th style="background-color: silver;">판매 상항</th>
+                                			<% if(product.get(0).getOnsale()==1) { %>
+                                			<td colspan = "3" span>판매중</td>
+                                			<%}else{ %>
+                                			<td colspan = "3" span>제품 준비 중</td>
+                                			<% }%>
+                                </tr>
+                                <tr align ="center" valign="middle">
+                                			<th style="background-color: silver;">가격</th>
+                                			<td colspan = "3" span><%= product.get(0).getPrice() %></td>
+                                </tr>
+                                	 <tr align ="center" valign="middle">
+									<p><td colspan = "4" span style="background-color: silver;color:white">제품 구매시 선택 항목</td></p>
+									  </tr>
+                                </tr>                                 		
+                                		<tr align ="center" valign="middle">
+                                			<th style="background-color: silver;">냉/온</th>
                                 			<% 
                                 			int index=0;
                                 			int hot=0;
@@ -75,23 +88,23 @@
                                 			}
                                 			if(cold ==1 && hot ==1){
                                 			%>
-                                				<td><span class="btn btn-danger"  disabled='disabled'><%= s_hot %></span> <span class="btn btn-primary"  disabled='disabled'><%= s_cold %></span></td>
+                                				<td colspan = "3" span><span class="btn btn-danger" disabled='disabled'><%= s_hot %></span> <span class="btn btn-primary"  disabled='disabled'><%= s_cold %></span></td>
                                 			<%
                                 			}
                                 			else if(cold ==1){
                                 				%>
-                                				<td><span class="btn btn-primary"  disabled='disabled'><%= s_cold %></span></td>
+                                				<td colspan = "3" span><span class="btn btn-primary"  disabled='disabled'><%= s_cold %></span></td>
                                 			<%	
                                 			}
                                 			else if(hot ==1){
                                 			%>
-                                				<td><span class="btn btn-danger"  disabled='disabled'><%= s_hot %></span></td>
+                                				<td colspan = "3" span><span class="btn btn-danger"  disabled='disabled'><%= s_hot %></span></td>
                                 			<%	
                                 			}
                                 			%>
                                 		</tr> 
-                                		<tr>
-                                			<th>용량</th>
+                                		<tr align ="center" valign="middle">
+                                			<th style="background-color: silver;">용량</th>
                                 			<%
                                 				int a=0;
                                 				int start=1;
@@ -120,7 +133,7 @@
                                 				a++;
                                 			}
                                 			%>
-                                			<td>
+                                			<td colspan = "3" span>
                                 			<%	
                                 			if(shot == true)
                                 			{
@@ -157,20 +170,27 @@
                                 				}
                                 			}
                                 			%>
-                                			</td>
-                                		</tr>                               		
-                                		<tr>
-                                			<th>판매 상항</th>
-                                			<% if(product.get(0).getOnsale()==1) { %>
-                                			<td>판매중</td>
-                                			<%}else{ %>
-                                			<td>제품 준비 중</td>
-                                			<% }%>
-                                		</tr>
-                                		<tr>
-                                			<th>가격</th>
-                                			<td><%= product.get(0).getPrice() %></td>
-                                		</tr>
+                                	</td>
+                                </tr> 
+                                <tr align ="center" valign="middle">
+									<p><strong><td colspan = "4" span style="background-color: silver;color:white;">제품 영양 정보[함량(100g 기준)]</td></strong></p>
+    						    </tr>
+    						    <tr align ="center" valign="middle">
+                                	<th style="background-color:silver;">칼로리(열량)</th>
+                                		<td><%= product.get(0).getCalorie() %> kcal</td>
+                                </tr>     
+                                <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">지방</th>
+                                		<td> <%= product.get(0).getFat() %> g</td>
+                                	<th  style="background-color: silver;">당</th>
+                                		<td> <%= product.get(0).getSugars() %>g</td>
+                                </tr> 
+                                <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">나트륨</th>
+                                		<td><%= product.get(0).getSodium() %> g</td>
+                                	<th  style="background-color: silver;">카페인</th>
+                                		<td><%= product.get(0).getCaffeine()%> g</td>
+                                	</tr>                       		
                                 	</thead>
                                 </table>
                                  <%-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

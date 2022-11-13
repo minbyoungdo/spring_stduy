@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mycoffee.domain.CodesVO;
 import com.mycoffee.domain.ProductJoinVO;
 import com.mycoffee.domain.Product_CategoryVO;
 import com.mycoffee.mapper.ProductMapper;
@@ -28,11 +29,10 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 
-	@Override
-	public List<Product_CategoryVO> getlist() {
-		log.info("get........");
-		return mapper.getlist();
-	}
+	/*
+	 * @Override public List<Product_CategoryVO> getlist() {
+	 * log.info("get........"); return mapper.getlist(); }
+	 */
 
 	@Override
 	public int getcount() {
@@ -57,5 +57,14 @@ public class ProductServiceImpl implements ProductService{
 	public ProductJoinVO get3(String pid) {
 		return mapper.get3(pid);
 	}
-
+	@Override
+	public List<Product_CategoryVO> getlist(int ptype) {
+		log.info("get........");
+		return mapper.getlist(ptype);
+	}
+	@Override
+	public List<CodesVO> getCodeList(String type) {
+		log.info("getCodeList: [type=" + type + "]");
+		return mapper.getCodeList(type);
+	}
 }

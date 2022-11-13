@@ -10,9 +10,9 @@
 	System.out.println(sessionId);
 %>
 
-<nav class="navbar navbar-expand-lg" style="background-color:#fff;">
+<nav class="navbar navbar-expand-lg" style="background-color:white;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./User_Main_Home"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color:black;">MainHome</font></font></a>
+   <img src="../resources/img/mycoffeelogo.png" style="width:250px; height:70px;margin-top:10px;margin-bottom:10px;">
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav ml-auto">
      <c:choose>
@@ -55,8 +55,30 @@
       </ul>
     </div>
   </div>
-  
 </nav>
-<div class="jumbotron" style="background-color : orange; height:170px;">
-
+<div class="container-fluid" style="background-color:black;height:10px;padding:0px;margin:0px;">
+</div>
+<div  class="jumbotron" style="width:100%;height:300px;background-color:orange;padding:0px;margin:0px;" align="center">
+	<!-- <img src="../resources/img/My-Coffee.jpg" style="width:75%; height:150px;padding-top:0px;margin-top:0px;margin-bottom:0px;" > -->
+	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"style="width:70%;height:300px;background-color:orange;padding:0px;margin:0px;"align="center">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../resources/img/가나슈 케이크.jpg" style="width:50%;height:300px;"class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../resources/img/치즈 케이크.jpg"style="width:50%;height:300px;"class="d-block w-100" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../resources/img/밀크 케이크.jpg"style="width:50%;height:300px;"class="d-block w-100" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 </div>

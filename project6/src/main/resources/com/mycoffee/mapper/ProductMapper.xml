@@ -4,8 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycoffee.mapper.ProductMapper">
 	<select id="getlist" resultType="com.mycoffee.domain.Product_CategoryVO">
-		<![CDATA[select * from tbl_product_category
-		]]>
+		select pc.* 
+		  from tbl_product_category pc
+		 where pc.ptype = #{ptype}
+		   and exists (select 1 from tbl_product p where p.pcategory = pc.pcategory and onsale = 1)
 	</select>
 	<select id="get" resultType="com.mycoffee.domain.Product_CategoryVO">
 		select * from tbl_product_category
@@ -31,5 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		pid ,temperature ,capacity ,price ,onsale
 		from tbl_product_category pc join tbl_product p on pc.pcategory=p.pcategory
 		where pid =#{pid}
+	</select>
+	
+	
+	
+	<select id="getCodeList" resultType="com.mycoffee.domain.CodesVO">
+		SELECT * FROM tbl_codes WHERE type = #{type}
 	</select>
 </mapper>

@@ -13,52 +13,63 @@
 	List<ProductJoinVO> product =(List)request.getAttribute("list");
 	int tem= 0;
 	int cap= 237;
-	//System.out.print("<<<<<<<<<<<<>>>>>>>>>>>>>><<<<<<<<<<<>>>>>>>>>>>>"+product.get(1));
 %>
+<style>
+	th{width:150px;}
+	td{text-align:left;}
+</style>
 <meta charset="utf-8">
-<script type="text/javascript">
-		function change() {
-			 var target = document.getElementById("cap");
-			consol.log(123123);
-			}
-		}
-	</script>
 </head>
 <body>
 <%@ include file="./User_menu.jsp" %>
-<div class="card" align="center">
-		<div class="container row"  style="border:1px solid;width:100%;margin-right:20%;margin-left:20%;">
-			<div class="col-md-12" style="border:1px solid;width:100%;">
-				<h3 class="form-signin-heading">상세 메뉴 설명</h3>
+<div class="card shadow-sm p-3 mb-5 bg-body rounded"" align="center">
+		<div class="container row"  style="border:1px solid;width:100%;margin-right:20%;margin-left:20%;padding:0px;">
+			<div class="col-md-12" style="border:1px solid;width:100%;margin:0px;padding:0px;background-color:orange;">
+				<h3 class="form-signin-heading">상세 메뉴 구매</h3>
 			</div>
-			<div class ="col-md-8" style="width:350px;height:100%;border:1px solid;">
+			<div class ="col-md-8" style="width:350px;height:500px;border:1px solid;margin-top: 18px;border-right:none;border-left:none;">
 			<img src="../resources/img/<c:out value="${product.imagefile}" />" style="width:250px; height:375px;margin-top:10px;margin-bottom:10px;">
 			</div>
-			<div class="col-md-4">
-				<div class="card-body">
+			<div class="col-md-4"  style="margin:0px;padding:0px;">
+				<div class="card-body" style="margin:0px;padding:0px;">
 					<form name="order" class="form-horizontal" method="post" action="/user/User_Order?product=<%= product.get(0) %>&category=<%=product.get(0).getPcategory()%>">
-					<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<div class="table-responsive" style="width:500px;padding:0px;margin:0px;">
+					<table class="table" id="dataTable" width="100%" cellspacing="0">
                         	<thead>
-                            	<tr>
-                            		<th>항목</th>
-                            			<td><%= product.get(0).getPcategory() %></td>
+                           		<tr align ="center" valign="middle">
+                            		<th style="background-color: silver;">메뉴 명</th>
+                           				 <td colspan = "3" span><h5><strong><i><%= product.get(0).getPname() %></i></strong></h5></td>
                             	</tr>
-                           		<tr>
-                            		<th>메뉴 명</th>
-                           				 <td><%= product.get(0).getPname() %></td>
+                            	<tr align ="center" valign="middle">
+                            		<th style="background-color: silver;padding-top: 0px;" >
+                            			<h6 align ="center" valign="middle" >설명</h6>
+                            		</th>
+                            			<td colspan = "3" span><%=product.get(0).getDescription() %></td>
                             	</tr>
-                                <tr>
-                                	<th>함량(100g 기준)</th>
-                               			 <td> 지방 : <%= product.get(0).getFat() %>,
-                                			 당 : <%= product.get(0).getSugars() %>, 나트륨 : <%= product.get(0).getSodium() %>,카페인 : <%= product.get(0).getCaffeine()%></td>
-                                </tr>
-                                <tr>
-                                	<th>칼로리</th>
+                                  <tr align ="center" valign="middle">
+									<p><strong><td colspan = "4" span style="background-color: silver;color:white;">제품 영양 정보[함량(100g 기준)]</td></strong></p>
+    						    </tr>
+    						    <tr align ="center" valign="middle">
+                                	<th style="background-color:silver;">칼로리(열량)</th>
                                 		<td><%= product.get(0).getCalorie() %> kcal</td>
+                                </tr>     
+                                <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">지방</th>
+                                		<td style="width:100px;"> <%= product.get(0).getFat() %> g</td>
+                                	<th  style="background-color: silver;">당</th>
+                                		<td> <%= product.get(0).getSugars() %>g</td>
+                                </tr> 
+                                <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">나트륨</th>
+                                		<td><%= product.get(0).getSodium() %> g</td>
+                                	<th  style="background-color: silver;">카페인</th>
+                                		<td style="width: 150px;"><%= product.get(0).getCaffeine()%> g</td>
                                 </tr>
-                                <tr>
-                                	<th>냉/온</th>
+                                <tr align ="center" valign="middle">
+										<p><td colspan = "4" span style="background-color: silver;color:white">제품 구매시 선택 항목</td></p>
+								</tr>    
+                                <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">냉/온</th>
                                 			<% 
                                 			int index=0;
                                 			int hot=0;
@@ -106,8 +117,8 @@
                                 			}
                                 			%>
                                 </tr>
-                                <tr>
-                                	<th>용량</th>
+                                <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">용량</th>
                                 	<%
                                 		int a=0;
                                 		int start=1;
@@ -164,9 +175,9 @@
                                 		</select>
                                 	</td>
                                 </tr>                              		
-                                <tr>
-                                	<th>가격</th>
-                                		<td><%= product.get(0).getPrice() %></td>
+                                 <tr align ="center" valign="middle">
+                                	<th style="background-color: silver;">가격</th>
+                                		<td colspan = "3" span><%= product.get(0).getPrice() %></td>
                                 </tr>
                            </thead>
                     </table>

@@ -1,13 +1,18 @@
 package com.mycoffee.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,9 +44,15 @@ public class ProductController {
 
 	//전체 리스트 가져올 때 사용-메뉴 페이지
 	@GetMapping("/User_Drink_Menu")
-	public void getlist(Model model)
+	public void getlist(Model model,Integer ptype)
 	{
-		model.addAttribute("list",service.getlist());
+		log.info("ptype: " + ptype);
+		if (ptype == null) {
+			ptype =0;
+		}
+		model.addAttribute("ptype", ptype);
+		model.addAttribute("ptypeList", service.getCodeList("PTYPE"));
+		model.addAttribute("list", service.getlist(ptype));
 	}
 	//해당 카테고리에 포함되는 리스트만 가져오기 -상세 설명 페이지/상세 주문 페이지
 	@GetMapping({"/User_One_Drink","User_Drink_Order"})
@@ -69,6 +80,11 @@ public class ProductController {
 		String tem=request.getParameter("tem");
 		String cap=request.getParameter("cap");
 		return "redirect:/user/CheckSession2?str=InsertOrder&category="+category+"&tem="+tem +"&cap="+cap;
-		
+	}
+	//메뉴화면
+	@GetMapping(value = "/async/product/list/{ptype}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<Product_CategoryVO>> getProductList(@PathVariable("ptype") Integer ptype) {
+		log.info("getProductList");
+		return ResponseEntity.ok(service.getlist(ptype));
 	}
 }
