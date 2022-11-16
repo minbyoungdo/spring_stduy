@@ -125,7 +125,7 @@
 						<a href="/user/User_One_Drink?category=<c:out value="${product.pcategory}" />"><img src="../resources/img/<c:out value="${product.imagefile}"/>" style="width:200px; height:250px" align="center"></a>
 						<div>
 							<p style="line-height:1"><c:out value="${product.pname}" /><p>
-							<p style="line-height:1">설명 : <c:out value="${product.description}"/><p>
+							<p style="line-height:1">rrrrrrrrr설명 : <c:out value="${product.description}"/><p>
 						</div>
 					</div>
 				</div>
